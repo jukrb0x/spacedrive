@@ -60,6 +60,13 @@ jobs:
         with:
           node-version: 17
           cache: 'pnpm'
+      
+      - name: Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: 6.x
+          eas-version: latest
+          # token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install workspace pnpm dependencies
         run: pnpm i --frozen-lockfile
