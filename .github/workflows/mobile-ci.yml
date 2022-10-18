@@ -42,7 +42,31 @@ jobs:
       - name: Perform typechecks
         working-directory: ./apps/mobile
         run: pnpm lint
+  
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-# TODO: Run IOS build
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.x.x
 
-# TODO: Run Android build
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17
+          cache: 'pnpm'
+
+      - name: Install workspace pnpm dependencies
+        run: pnpm i --frozen-lockfile
+      
+      - name: Install mobile pnpm dependencies
+        working-directory: ./apps/mobile
+        run: pnpm i --frozen-lockfile
+      
+      - name: Build on EAS
+        run: eas build --platform all --non-interactive
