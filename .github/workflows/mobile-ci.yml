@@ -78,4 +78,4 @@ jobs:
       
       - name: Build on EAS
         working-directory: ./apps/mobile
-        run: eas build --platform all --non-interactive
+        run: eas build --platform android --non-interactive # TODO: Build for IOS too once Expo account is setup with Apple Developer account
