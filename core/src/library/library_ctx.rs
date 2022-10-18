@@ -1,5 +1,9 @@
 use crate::job::DynJob;
-use std::sync::Arc;
+
+use std::{
+	fmt::{Debug, Formatter},
+	sync::Arc,
+};
 use tracing::warn;
 use uuid::Uuid;
 
@@ -20,6 +24,19 @@ pub struct LibraryContext {
 	pub node_local_id: i32,
 	/// node_context holds the node context for the node which this library is running on.
 	pub(super) node_context: NodeContext,
+}
+
+impl Debug for LibraryContext {
+	fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+		// Rolling out this implementation because `NodeContext` contains a DynJob which is
+		// troublesome to implement Debug trait
+		f.debug_struct("LibraryContext")
+			.field("id", &self.id)
+			.field("config", &self.config)
+			.field("db", &self.db)
+			.field("node_local_id", &self.node_local_id)
+			.finish()
+	}
 }
 
 impl LibraryContext {
