@@ -1,0 +1,49 @@
+name: Mobile CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/.md'
+  workflow_dispatch:
+
+env:
+  SPACEDRIVE_CUSTOM_APT_FLAGS: --no-install-recommends
+
+jobs:
+  typescript:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.x.x
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17
+          cache: 'pnpm'
+
+      - name: Install workspace pnpm dependencies
+        run: pnpm i --frozen-lockfile
+      
+      - name: Install mobile pnpm dependencies
+        working-dir: ./apps/mobile
+        run: pnpm i --frozen-lockfile
+
+      - name: Perform typechecks
+        working-dir: ./apps/mobile
+        run: pnpm typecheck
+    
+    # TODO: Run lints
+
+    # TODO: Run IOS build
+
+    # TODO: Run Android build
