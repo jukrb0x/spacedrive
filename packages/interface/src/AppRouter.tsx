@@ -10,7 +10,7 @@ import { useKeybindHandler } from './hooks/useKeyboardHandler';
 const DebugScreen = loadable(() => import('./screens/Debug'));
 const SettingsScreen = loadable(() => import('./screens/settings/Settings'));
 const TagExplorer = loadable(() => import('./screens/TagExplorer'));
-const PhotosScreen = loadable(() => import('./screens/Photos'));
+const SpacedropScreen = loadable(() => import('./screens/Spacedrop'));
 const OverviewScreen = loadable(() => import('./screens/Overview'));
 const ContentScreen = loadable(() => import('./screens/Content'));
 const LocationExplorer = loadable(() => import('./screens/LocationExplorer'));
@@ -66,7 +66,7 @@ export function AppRouter() {
 							<Route index element={<Navigate to="/overview" />} />
 							<Route path="overview" element={<OverviewScreen />} />
 							<Route path="content" element={<ContentScreen />} />
-							<Route path="photos" element={<PhotosScreen />} />
+							<Route path="drop" element={<SpacedropScreen />} />
 							<Route path="debug" element={<DebugScreen />} />
 							<Route path={'settings'} element={<SettingsScreen />}>
 								<Route index element={<GeneralSettings />} />

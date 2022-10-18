@@ -4,7 +4,7 @@ import { useCurrentLibrary, useLibraryMutation, useLibraryQuery, usePlatform } f
 import { LocationCreateArgs } from '@sd/client';
 import { Button, CategoryHeading, Dropdown, OverlayPanel } from '@sd/ui';
 import clsx from 'clsx';
-import { CheckCircle, CirclesFour, Planet, WaveTriangle } from 'phosphor-react';
+import { CheckCircle, CirclesFour, HandGrabbing, Planet } from 'phosphor-react';
 import { PropsWithChildren } from 'react';
 import { NavLink, NavLinkProps, useNavigate } from 'react-router-dom';
 
@@ -221,9 +221,9 @@ export function Sidebar() {
 					<Icon component={CirclesFour} />
 					Spaces
 				</SidebarLink>
-				<SidebarLink to="photos">
-					<Icon component={PhotoIcon} />
-					Photos
+				<SidebarLink to="drop">
+					<HandGrabbing className="w-4 h-4 mr-2" />
+					Spacedrop
 				</SidebarLink>
 			</div>
 
