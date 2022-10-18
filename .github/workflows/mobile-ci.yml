@@ -77,4 +77,5 @@ jobs:
         run: pnpm i --frozen-lockfile
       
       - name: Build on EAS
+        working-directory: ./apps/mobile
         run: eas build --platform all --non-interactive
