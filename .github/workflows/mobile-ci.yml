@@ -67,7 +67,7 @@ jobs:
           expo-version: 6.x
           eas-version: latest
           packager: pnpm
-          # token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install workspace pnpm dependencies
         run: pnpm i --frozen-lockfile
