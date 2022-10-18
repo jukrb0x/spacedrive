@@ -2,6 +2,7 @@
 	"expo": {
 		"name": "Spacedrive",
 		"slug": "spacedrive",
+		"owner": "spacedrive",
 		"version": "0.0.1",
 		"orientation": "portrait",
 		"jsEngine": "hermes",

@@ -8,7 +8,7 @@
 		"android": "expo run:android",
 		"ios": "expo run:ios",
 		"xcode": "open ios/spacedrive.xcworkspace",
-		"lint": "eslint src/**/*.{ts,tsx} && tsc --noEmit",
+		"lint": " tsc --noEmit && eslint src/**/*.{ts,tsx}",
 		"postinstall": "node scripts/postinstall.js"
 	},
 	"dependencies": {
